@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "target": "pipeline_definition",
+  "pipeline": {
+    "id": "pl_1ba2b6fe2636",
+    "name": "Meridian Weekly Restock Pipeline",
+    "description": null,
+    "pageId": "70e08a92-ef90-492a-bc7b-2f3b881af062",
+    "collectionId": "coll_7685fc088020",
+    "runConcurrency": "single"
+  },
+  "definitionFile": "assets/pipeline.json",
+  "tasksDir": "tasks",
+  "stages": [
+    {
+      "id": "stage_z4ump26",
+      "name": "intake"
+    },
+    {
+      "id": "stage_94vdup9",
+      "name": "inventory_ready"
+    },
+    {
+      "id": "stage_501w69i",
+      "name": "forecast_ready"
+    },
+    {
+      "id": "stage_wyp8879",
+      "name": "drafts_ready"
+    }
+  ],
+  "columns": [
+    {
+      "key": "name",
+      "label": "Name",
+      "type": "text",
+      "required": false
+    },
+    {
+      "key": "description",
+      "label": "Description",
+      "type": "text",
+      "required": false
+    },
+    {
+      "key": "status",
+      "label": "Status",
+      "type": "text",
+      "required": false
+    },
+    {
+      "key": "createdAt",
+      "label": "Created",
+      "type": "date",
+      "required": false
+    }
+  ],
+  "transitionIds": [
+    "stage_z4ump26__default",
+    "stage_94vdup9__default",
+    "stage_501w69i__default",
+    "stage_wyp8879__default"
+  ]
+}

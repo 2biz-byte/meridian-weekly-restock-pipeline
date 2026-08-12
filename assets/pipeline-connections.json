@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 2,
+  "commandId": "pl_1ba2b6fe2636",
+  "trigger": "pl_1ba2b6fe2636",
+  "label": "Meridian Weekly Restock Pipeline",
+  "updatedAt": 1786540685601,
+  "nodes": [
+    {
+      "id": "pipeline:pl_1ba2b6fe2636",
+      "kind": "execution",
+      "label": "Meridian Weekly Restock Pipeline",
+      "description": "Pipeline state machine",
+      "meta": {
+        "executionType": "pipeline",
+        "pipelineId": "pl_1ba2b6fe2636",
+        "collectionId": "coll_7685fc088020"
+      }
+    },
+    {
+      "id": "pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26",
+      "kind": "pipeline_stage",
+      "label": "intake",
+      "description": "Meridian Weekly Restock Pipeline",
+      "meta": {
+        "pipelineId": "pl_1ba2b6fe2636",
+        "stageId": "stage_z4ump26",
+        "stageType": "initial",
+        "color": "#8b5cf6"
+      }
+    },
+    {
+      "id": "pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9",
+      "kind": "pipeline_stage",
+      "label": "inventory_ready",
+      "description": "Meridian Weekly Restock Pipeline",
+      "meta": {
+        "pipelineId": "pl_1ba2b6fe2636",
+        "stageId": "stage_94vdup9",
+        "stageType": "intermediate",
+        "color": "#6366f1"
+      }
+    },
+    {
+      "id": "pipeline-stage:pl_1ba2b6fe2636:stage_501w69i",
+      "kind": "pipeline_stage",
+      "label": "forecast_ready",
+      "description": "Meridian Weekly Restock Pipeline",
+      "meta": {
+        "pipelineId": "pl_1ba2b6fe2636",
+        "stageId": "stage_501w69i",
+        "stageType": "intermediate",
+        "color": "#3b82f6"
+      }
+    },
+    {
+      "id": "pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879",
+      "kind": "pipeline_stage",
+      "label": "drafts_ready",
+      "description": "Meridian Weekly Restock Pipeline",
+      "meta": {
+        "pipelineId": "pl_1ba2b6fe2636",
+        "stageId": "stage_wyp8879",
+        "stageType": "terminal",
+        "color": "#0ea5e9"
+      }
+    },
+    {
+      "id": "collection:coll_7685fc088020",
+      "kind": "collection",
+      "label": "coll_7685fc088020",
+      "description": "Meridian Weekly Restock Pipeline collection",
+      "meta": {
+        "collectionId": "coll_7685fc088020",
+        "pipelineId": "pl_1ba2b6fe2636"
+      }
+    },
+    {
+      "id": "pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default",
+      "kind": "pipeline_transition",
+      "label": "intake",
+      "description": "Pipeline transition",
+      "meta": {
+        "pipelineId": "pl_1ba2b6fe2636",
+        "transitionId": "stage_z4ump26__default",
+        "trigger": "manual"
+      }
+    },
+    {
+      "id": "pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default",
+      "kind": "pipeline_transition",
+      "label": "inventory_ready",
+      "description": "Pipeline transition",
+      "meta": {
+        "pipelineId": "pl_1ba2b6fe2636",
+        "transitionId": "stage_94vdup9__default",
+        "trigger": "manual"
+      }
+    },
+    {
+      "id": "pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default",
+      "kind": "pipeline_transition",
+      "label": "forecast_ready",
+      "description": "Pipeline transition",
+      "meta": {
+        "pipelineId": "pl_1ba2b6fe2636",
+        "transitionId": "stage_501w69i__default",
+        "trigger": "manual"
+      }
+    },
+    {
+      "id": "pipeline-transition:pl_1ba2b6fe2636:stage_wyp8879__default",
+      "kind": "pipeline_transition",
+      "label": "drafts_ready",
+      "description": "Pipeline transition",
+      "meta": {
+        "pipelineId": "pl_1ba2b6fe2636",
+        "transitionId": "stage_wyp8879__default",
+        "trigger": "manual"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:pipeline:pl_1ba2b6fe2636:route:pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26:1",
+      "source": "pipeline:pl_1ba2b6fe2636",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26",
+      "relation": "route",
+      "label": "start"
+    },
+    {
+      "id": "edge:pipeline:pl_1ba2b6fe2636:writes:collection:coll_7685fc088020:2",
+      "source": "pipeline:pl_1ba2b6fe2636",
+      "target": "collection:coll_7685fc088020",
+      "relation": "writes"
+    },
+    {
+      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26:triggers:pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default:3",
+      "source": "pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26",
+      "target": "pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default",
+      "relation": "triggers"
+    },
+    {
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default:success:pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9:4",
+      "source": "pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9",
+      "relation": "success"
+    },
+    {
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default:failure:pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26:5",
+      "source": "pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26",
+      "relation": "failure"
+    },
+    {
+      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9:triggers:pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default:6",
+      "source": "pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9",
+      "target": "pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default",
+      "relation": "triggers"
+    },
+    {
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default:success:pipeline-stage:pl_1ba2b6fe2636:stage_501w69i:7",
+      "source": "pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_501w69i",
+      "relation": "success"
+    },
+    {
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default:failure:pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9:8",
+      "source": "pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9",
+      "relation": "failure"
+    },
+    {
+      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_501w69i:triggers:pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default:9",
+      "source": "pipeline-stage:pl_1ba2b6fe2636:stage_501w69i",
+      "target": "pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default",
+      "relation": "triggers"
+    },
+    {
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default:success:pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879:10",
+      "source": "pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879",
+      "relation": "success"
+    },
+    {
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default:failure:pipeline-stage:pl_1ba2b6fe2636:stage_501w69i:11",
+      "source": "pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_501w69i",
+      "relation": "failure"
+    },
+    {
+      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879:triggers:pipeline-transition:pl_1ba2b6fe2636:stage_wyp8879__default:12",
+      "source": "pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879",
+      "target": "pipeline-transition:pl_1ba2b6fe2636:stage_wyp8879__default",
+      "relation": "triggers"
+    },
+    {
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_wyp8879__default:failure:pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879:13",
+      "source": "pipeline-transition:pl_1ba2b6fe2636:stage_wyp8879__default",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879",
+      "relation": "failure"
+    }
+  ],
+  "relatedTodoIds": []
+}

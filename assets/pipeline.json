@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 1,
+  "pageId": "70e08a92-ef90-492a-bc7b-2f3b881af062",
+  "pipelineId": "pl_1ba2b6fe2636",
+  "pipeline": {
+    "id": "pl_1ba2b6fe2636",
+    "pageId": "70e08a92-ef90-492a-bc7b-2f3b881af062",
+    "userId": "1786534579080",
+    "name": "Meridian Weekly Restock Pipeline",
+    "description": null,
+    "collectionId": "coll_7685fc088020",
+    "stages": [
+      {
+        "id": "stage_z4ump26",
+        "name": "intake",
+        "type": "initial",
+        "triggerKind": "manual",
+        "description": null,
+        "workflowEndpointId": null,
+        "reactiveConfig": {
+          "webhookEnabled": true
+        },
+        "scheduledConfig": null,
+        "dataChangeConfig": null,
+        "colorToken": "#8b5cf6",
+        "icon": null,
+        "order": 0,
+        "transition": {
+          "successStageId": "stage_94vdup9",
+          "guard": null,
+          "inputBindings": null,
+          "automation": {
+            "requireHumanConfirmation": true
+          },
+          "success": {
+            "advanceToStageId": "stage_94vdup9",
+            "guard": null,
+            "guardText": null,
+            "guardAst": null,
+            "outputMapping": null,
+            "persistMode": "shared_patch",
+            "arrayKey": "records",
+            "correlation": null,
+            "effects": null,
+            "persistListName": null
+          },
+          "failure": null
+        },
+        "outputMapping": null,
+        "outputMode": "single",
+        "outputArrayKey": null,
+        "upsertKey": null
+      },
+      {
+        "id": "stage_94vdup9",
+        "name": "inventory_ready",
+        "type": "intermediate",
+        "triggerKind": "manual",
+        "description": null,
+        "workflowEndpointId": null,
+        "reactiveConfig": null,
+        "scheduledConfig": null,
+        "dataChangeConfig": null,
+        "colorToken": "#6366f1",
+        "icon": null,
+        "order": 1,
+        "transition": {
+          "successStageId": "stage_501w69i",
+          "guard": null,
+          "inputBindings": null,
+          "automation": {
+            "requireHumanConfirmation": true
+          },
+          "success": {
+            "advanceToStageId": "stage_501w69i",
+            "guard": null,
+            "guardText": null,
+            "guardAst": null,
+            "outputMapping": null,
+            "persistMode": "shared_patch",
+            "arrayKey": "records",
+            "correlation": null,
+            "effects": null,
+            "persistListName": null
+          },
+          "failure": null
+        },
+        "outputMapping": null,
+        "outputMode": "single",
+        "outputArrayKey": null,
+        "upsertKey": null
+      },
+      {
+        "id": "stage_501w69i",
+        "name": "forecast_ready",
+        "type": "intermediate",
+        "triggerKind": "manual",
+        "description": null,
+        "workflowEndpointId": null,
+        "reactiveConfig": null,
+        "scheduledConfig": null,
+        "dataChangeConfig": null,
+        "colorToken": "#3b82f6",
+        "icon": null,
+        "order": 2,
+        "transition": {
+          "successStageId": "stage_wyp8879",
+          "guard": null,
+          "inputBindings": null,
+          "automation": {
+            "requireHumanConfirmation": true
+          },
+          "success": {
+            "advanceToStageId": "stage_wyp8879",
+            "guard": null,
+            "guardText": null,
+            "guardAst": null,
+            "outputMapping": null,
+            "persistMode": "shared_patch",
+            "arrayKey": "records",
+            "correlation": null,
+            "effects": null,
+            "persistListName": null
+          },
+          "failure": null
+        },
+        "outputMapping": null,
+        "outputMode": "single",
+        "outputArrayKey": null,
+        "upsertKey": null
+      },
+      {
+        "id": "stage_wyp8879",
+        "name": "drafts_ready",
+        "type": "terminal",
+        "triggerKind": "manual",
+        "description": null,
+        "workflowEndpointId": null,
+        "reactiveConfig": null,
+        "scheduledConfig": null,
+        "dataChangeConfig": null,
+        "colorToken": "#0ea5e9",
+        "icon": null,
+        "order": 3,
+        "transition": {
+          "guard": null,
+          "inputBindings": null,
+          "automation": {
+            "requireHumanConfirmation": true
+          },
+          "success": {
+            "advanceToStageId": null,
+            "guard": null,
+            "guardText": null,
+            "guardAst": null,
+            "outputMapping": null,
+            "persistMode": "shared_patch",
+            "arrayKey": "records",
+            "correlation": null,
+            "effects": null,
+            "persistListName": null
+          },
+          "failure": null
+        },
+        "outputMapping": null,
+        "outputMode": "single",
+        "outputArrayKey": null,
+        "upsertKey": null
+      }
+    ],
+    "transitions": [
+      {
+        "id": "stage_z4ump26__default",
+        "name": "intake",
+        "fromStageId": "stage_z4ump26",
+        "toStageId": "stage_94vdup9",
+        "workflowEndpointId": null,
+        "acquisition": null,
+        "postProcessors": null,
+        "inputBindings": null,
+        "trigger": "manual",
+        "automation": {
+          "requireHumanConfirmation": true
+        },
+        "approvalGuard": null,
+        "success": {
+          "advanceToStageId": "stage_94vdup9",
+          "guardText": null,
+          "guardAst": null,
+          "fieldMappings": null,
+          "persistMode": "shared_patch",
+          "arrayKey": "records",
+          "correlation": null,
+          "effects": null,
+          "persistListName": null
+        },
+        "failure": {
+          "advanceToStageId": null,
+          "guardText": null,
+          "guardAst": null,
+          "fieldMappings": null,
+          "persistMode": "shared_patch",
+          "arrayKey": null,
+          "correlation": null,
+          "effects": null,
+          "persistListName": null
+        },
+        "failureRoutes": null,
+        "failureStageId": null,
+        "guard": null,
+        "fieldMappings": null,
+        "outputMode": "single",
+        "outputArrayKey": "records",
+        "selectionMode": "all_in_stage",
+        "batchMode": "none",
+        "manualLabel": null,
+        "legacyRouteKey": null,
+        "upsertKey": null
+      },
+      {
+        "id": "stage_94vdup9__default",
+        "name": "inventory_ready",
+        "fromStageId": "stage_94vdup9",
+        "toStageId": "stage_501w69i",
+        "workflowEndpointId": null,
+        "acquisition": null,
+        "postProcessors": null,
+        "inputBindings": null,
+        "trigger": "manual",
+        "automation": {
+          "requireHumanConfirmation": true
+        },
+        "approvalGuard": null,
+        "success": {
+          "advanceToStageId": "stage_501w69i",
+          "guardText": null,
+          "guardAst": null,
+          "fieldMappings": null,
+          "persistMode": "shared_patch",
+          "arrayKey": "records",
+          "correlation": null,
+          "effects": null,
+          "persistListName": null
+        },
+        "failure": {
+          "advanceToStageId": null,
+          "guardText": null,
+          "guardAst": null,
+          "fieldMappings": null,
+          "persistMode": "shared_patch",
+          "arrayKey": null,
+          "correlation": null,
+          "effects": null,
+          "persistListName": null
+        },
+        "failureRoutes": null,
+        "failureStageId": null,
+        "guard": null,
+        "fieldMappings": null,
+        "outputMode": "single",
+        "outputArrayKey": "records",
+        "selectionMode": "all_in_stage",
+        "batchMode": "none",
+        "manualLabel": null,
+        "legacyRouteKey": null,
+        "upsertKey": null
+      },
+      {
+        "id": "stage_501w69i__default",
+        "name": "forecast_ready",
+        "fromStageId": "stage_501w69i",
+        "toStageId": "stage_wyp8879",
+        "workflowEndpointId": null,
+        "acquisition": null,
+        "postProcessors": null,
+        "inputBindings": null,
+        "trigger": "manual",
+        "automation": {
+          "requireHumanConfirmation": true
+        },
+        "approvalGuard": null,
+        "success": {
+          "advanceToStageId": "stage_wyp8879",
+          "guardText": null,
+          "guardAst": null,
+          "fieldMappings": null,
+          "persistMode": "shared_patch",
+          "arrayKey": "records",
+          "correlation": null,
+          "effects": null,
+          "persistListName": null
+        },
+        "failure": {
+          "advanceToStageId": null,
+          "guardText": null,
+          "guardAst": null,
+          "fieldMappings": null,
+          "persistMode": "shared_patch",
+          "arrayKey": null,
+          "correlation": null,
+          "effects": null,
+          "persistListName": null
+        },
+        "failureRoutes": null,
+        "failureStageId": null,
+        "guard": null,
+        "fieldMappings": null,
+        "outputMode": "single",
+        "outputArrayKey": "records",
+        "selectionMode": "all_in_stage",
+        "batchMode": "none",
+        "manualLabel": null,
+        "legacyRouteKey": null,
+        "upsertKey": null
+      },
+      {
+        "id": "stage_wyp8879__default",
+        "name": "drafts_ready",
+        "fromStageId": "stage_wyp8879",
+        "toStageId": null,
+        "workflowEndpointId": null,
+        "acquisition": null,
+        "postProcessors": null,
+        "inputBindings": null,
+        "trigger": "manual",
+        "automation": {
+          "requireHumanConfirmation": true
+        },
+        "approvalGuard": null,
+        "success": {
+          "advanceToStageId": null,
+          "guardText": null,
+          "guardAst": null,
+          "fieldMappings": null,
+          "persistMode": "shared_patch",
+          "arrayKey": "records",
+          "correlation": null,
+          "effects": null,
+          "persistListName": null
+        },
+        "failure": {
+          "advanceToStageId": null,
+          "guardText": null,
+          "guardAst": null,
+          "fieldMappings": null,
+          "persistMode": "shared_patch",
+          "arrayKey": null,
+          "correlation": null,
+          "effects": null,
+          "persistListName": null
+        },
+        "failureRoutes": null,
+        "failureStageId": null,
+        "guard": null,
+        "fieldMappings": null,
+        "outputMode": "single",
+        "outputArrayKey": "records",
+        "selectionMode": "all_in_stage",
+        "batchMode": "none",
+        "manualLabel": null,
+        "legacyRouteKey": null,
+        "upsertKey": null
+      }
+    ],
+    "acquisitionRecipes": [],
+    "columns": [
+      {
+        "id": "col_name_0",
+        "key": "name",
+        "label": "Name",
+        "type": "text",
+        "required": false,
+        "options": null,
+        "order": 0
+      },
+      {
+        "id": "col_description_1",
+        "key": "description",
+        "label": "Description",
+        "type": "text",
+        "required": false,
+        "options": null,
+        "order": 1
+      },
+      {
+        "id": "col_status_2",
+        "key": "status",
+        "label": "Status",
+        "type": "text",
+        "required": false,
+        "options": null,
+        "order": 2
+      },
+      {
+        "id": "col_createdAt_3",
+        "key": "createdAt",
+        "label": "Created",
+        "type": "date",
+        "required": false,
+        "options": null,
+        "order": 3
+      }
+    ],
+    "existingCasePolicies": [],
+    "runConcurrency": "single",
+    "projectionRepairVersion": 1,
+    "version": 2,
+    "isPublic": true,
+    "isDeleted": false,
+    "createdAt": "2026-08-12T13:18:05.437Z",
+    "updatedAt": "2026-08-12T13:18:05.601Z"
+  },
+  "commitMessage": "Initial migration from pipeline wizard"
+}

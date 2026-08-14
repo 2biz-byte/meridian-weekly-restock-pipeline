@@ -7,7 +7,7 @@
     "pageId": "70e08a92-ef90-492a-bc7b-2f3b881af062",
     "userId": "1786534579080",
     "name": "Meridian Weekly Restock Pipeline",
-    "description": null,
+    "description": "Weekly stock-out restock planning pipeline",
     "collectionId": "coll_7685fc088020",
     "stages": [
       {
@@ -16,7 +16,7 @@
         "type": "initial",
         "triggerKind": "manual",
         "description": null,
-        "workflowEndpointId": null,
+        "workflowEndpointId": "shopify-inventory-scan",
         "reactiveConfig": {
           "webhookEnabled": true
         },
@@ -38,7 +38,7 @@
             "guardText": null,
             "guardAst": null,
             "outputMapping": null,
-            "persistMode": "shared_patch",
+            "persistMode": "create_or_upsert",
             "arrayKey": "records",
             "correlation": null,
             "effects": null,
@@ -57,7 +57,7 @@
         "type": "intermediate",
         "triggerKind": "manual",
         "description": null,
-        "workflowEndpointId": null,
+        "workflowEndpointId": "sheets-sales-forecast",
         "reactiveConfig": null,
         "scheduledConfig": null,
         "dataChangeConfig": null,
@@ -96,7 +96,7 @@
         "type": "intermediate",
         "triggerKind": "manual",
         "description": null,
-        "workflowEndpointId": null,
+        "workflowEndpointId": "gmail-draft-supplier-email",
         "reactiveConfig": null,
         "scheduledConfig": null,
         "dataChangeConfig": null,
@@ -174,7 +174,7 @@
         "name": "intake",
         "fromStageId": "stage_z4ump26",
         "toStageId": "stage_94vdup9",
-        "workflowEndpointId": null,
+        "workflowEndpointId": "shopify-inventory-scan",
         "acquisition": null,
         "postProcessors": null,
         "inputBindings": null,
@@ -187,8 +187,29 @@
           "advanceToStageId": "stage_94vdup9",
           "guardText": null,
           "guardAst": null,
-          "fieldMappings": null,
-          "persistMode": "shared_patch",
+          "fieldMappings": [
+            {
+              "targetField": "at_risk_skus",
+              "sourcePath": "at_risk_skus"
+            },
+            {
+              "targetField": "inventory_snapshot",
+              "sourcePath": "inventory_snapshot"
+            },
+            {
+              "targetField": "at_risk_sku_count",
+              "sourcePath": "at_risk_sku_count"
+            },
+            {
+              "targetField": "week_of",
+              "sourcePath": "week_of"
+            },
+            {
+              "targetField": "source_kind",
+              "sourcePath": "source_kind"
+            }
+          ],
+          "persistMode": "create_or_upsert",
           "arrayKey": "records",
           "correlation": null,
           "effects": null,
@@ -222,7 +243,7 @@
         "name": "inventory_ready",
         "fromStageId": "stage_94vdup9",
         "toStageId": "stage_501w69i",
-        "workflowEndpointId": null,
+        "workflowEndpointId": "sheets-sales-forecast",
         "acquisition": null,
         "postProcessors": null,
         "inputBindings": null,
@@ -235,7 +256,16 @@
           "advanceToStageId": "stage_501w69i",
           "guardText": null,
           "guardAst": null,
-          "fieldMappings": null,
+          "fieldMappings": [
+            {
+              "targetField": "forecast_7d",
+              "sourcePath": "forecast_7d"
+            },
+            {
+              "targetField": "reorder_lines",
+              "sourcePath": "reorder_lines"
+            }
+          ],
           "persistMode": "shared_patch",
           "arrayKey": "records",
           "correlation": null,
@@ -270,7 +300,7 @@
         "name": "forecast_ready",
         "fromStageId": "stage_501w69i",
         "toStageId": "stage_wyp8879",
-        "workflowEndpointId": null,
+        "workflowEndpointId": "gmail-draft-supplier-email",
         "acquisition": null,
         "postProcessors": null,
         "inputBindings": null,
@@ -283,7 +313,20 @@
           "advanceToStageId": "stage_wyp8879",
           "guardText": null,
           "guardAst": null,
-          "fieldMappings": null,
+          "fieldMappings": [
+            {
+              "targetField": "email_drafts",
+              "sourcePath": "email_drafts"
+            },
+            {
+              "targetField": "email_draft_status",
+              "sourcePath": "email_draft_status"
+            },
+            {
+              "targetField": "summary",
+              "sourcePath": "summary"
+            }
+          ],
           "persistMode": "shared_patch",
           "arrayKey": "records",
           "correlation": null,
@@ -365,40 +408,137 @@
     "acquisitionRecipes": [],
     "columns": [
       {
-        "id": "col_name_0",
-        "key": "name",
-        "label": "Name",
-        "type": "text",
+        "id": "col_week_of_0",
+        "key": "week_of",
+        "label": "Week Of",
+        "type": "date",
         "required": false,
         "options": null,
         "order": 0
       },
       {
-        "id": "col_description_1",
-        "key": "description",
-        "label": "Description",
-        "type": "text",
+        "id": "col_source_kind_1",
+        "key": "source_kind",
+        "label": "Source Kind",
+        "type": "select",
         "required": false,
-        "options": null,
+        "options": [
+          "shopify_sheets_gmail"
+        ],
         "order": 1
       },
       {
-        "id": "col_status_2",
-        "key": "status",
-        "label": "Status",
-        "type": "text",
+        "id": "col_at_risk_sku_count_2",
+        "key": "at_risk_sku_count",
+        "label": "At-Risk SKU Count",
+        "type": "number",
         "required": false,
         "options": null,
         "order": 2
       },
       {
-        "id": "col_createdAt_3",
-        "key": "createdAt",
-        "label": "Created",
-        "type": "date",
+        "id": "col_at_risk_skus_3",
+        "key": "at_risk_skus",
+        "label": "At-Risk SKUs",
+        "type": "json",
         "required": false,
         "options": null,
         "order": 3
+      },
+      {
+        "id": "col_inventory_snapshot_4",
+        "key": "inventory_snapshot",
+        "label": "Inventory Snapshot",
+        "type": "json",
+        "required": false,
+        "options": null,
+        "order": 4
+      },
+      {
+        "id": "col_forecast_7d_5",
+        "key": "forecast_7d",
+        "label": "7-Day Forecast",
+        "type": "json",
+        "required": false,
+        "options": null,
+        "order": 5
+      },
+      {
+        "id": "col_reorder_lines_6",
+        "key": "reorder_lines",
+        "label": "Reorder Lines",
+        "type": "json",
+        "required": false,
+        "options": null,
+        "order": 6
+      },
+      {
+        "id": "col_email_drafts_7",
+        "key": "email_drafts",
+        "label": "Email Drafts",
+        "type": "json",
+        "required": false,
+        "options": null,
+        "order": 7
+      },
+      {
+        "id": "col_email_draft_status_8",
+        "key": "email_draft_status",
+        "label": "Email Draft Status",
+        "type": "select",
+        "required": false,
+        "options": [
+          "none",
+          "drafted",
+          "approved",
+          "sent"
+        ],
+        "order": 8
+      },
+      {
+        "id": "col_summary_9",
+        "key": "summary",
+        "label": "Summary",
+        "type": "text",
+        "required": false,
+        "options": null,
+        "order": 9
+      },
+      {
+        "id": "col_notes_10",
+        "key": "notes",
+        "label": "Notes",
+        "type": "text",
+        "required": false,
+        "options": null,
+        "order": 10
+      },
+      {
+        "id": "col_case_attempt_id_11",
+        "key": "case_attempt_id",
+        "label": "Case Attempt ID",
+        "type": "text",
+        "required": false,
+        "options": null,
+        "order": 11
+      },
+      {
+        "id": "col_approved_by_12",
+        "key": "approved_by",
+        "label": "Approved By",
+        "type": "text",
+        "required": false,
+        "options": null,
+        "order": 12
+      },
+      {
+        "id": "col_approved_at_13",
+        "key": "approved_at",
+        "label": "Approved At",
+        "type": "date",
+        "required": false,
+        "options": null,
+        "order": 13
       }
     ],
     "existingCasePolicies": [],
@@ -408,7 +548,7 @@
     "isPublic": true,
     "isDeleted": false,
     "createdAt": "2026-08-12T13:18:05.437Z",
-    "updatedAt": "2026-08-12T13:18:05.601Z"
+    "updatedAt": "2026-08-14T11:53:00.000Z"
   },
-  "commitMessage": "Initial migration from pipeline wizard"
+  "commitMessage": "Bind Meridian restock pipeline transitions to list + workflows"
 }

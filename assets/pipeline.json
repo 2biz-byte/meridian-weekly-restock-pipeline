@@ -30,7 +30,8 @@
           "guard": null,
           "inputBindings": null,
           "automation": {
-            "requireHumanConfirmation": true
+            "requireHumanConfirmation": true,
+            "autoFireOnEntry": false
           },
           "success": {
             "advanceToStageId": "stage_94vdup9",
@@ -69,7 +70,8 @@
           "guard": null,
           "inputBindings": null,
           "automation": {
-            "requireHumanConfirmation": true
+            "requireHumanConfirmation": true,
+            "autoFireOnEntry": false
           },
           "success": {
             "advanceToStageId": "stage_501w69i",
@@ -108,7 +110,8 @@
           "guard": null,
           "inputBindings": null,
           "automation": {
-            "requireHumanConfirmation": true
+            "requireHumanConfirmation": true,
+            "autoFireOnEntry": false
           },
           "success": {
             "advanceToStageId": "stage_wyp8879",
@@ -146,7 +149,8 @@
           "guard": null,
           "inputBindings": null,
           "automation": {
-            "requireHumanConfirmation": true
+            "requireHumanConfirmation": true,
+            "autoFireOnEntry": false
           },
           "success": {
             "advanceToStageId": null,
@@ -180,7 +184,8 @@
         "inputBindings": null,
         "trigger": "manual",
         "automation": {
-          "requireHumanConfirmation": true
+          "requireHumanConfirmation": true,
+          "autoFireOnEntry": false
         },
         "approvalGuard": null,
         "success": {
@@ -249,7 +254,8 @@
         "inputBindings": null,
         "trigger": "manual",
         "automation": {
-          "requireHumanConfirmation": true
+          "requireHumanConfirmation": true,
+          "autoFireOnEntry": false
         },
         "approvalGuard": null,
         "success": {
@@ -306,7 +312,8 @@
         "inputBindings": null,
         "trigger": "manual",
         "automation": {
-          "requireHumanConfirmation": true
+          "requireHumanConfirmation": true,
+          "autoFireOnEntry": false
         },
         "approvalGuard": null,
         "success": {
@@ -367,7 +374,8 @@
         "inputBindings": null,
         "trigger": "manual",
         "automation": {
-          "requireHumanConfirmation": true
+          "requireHumanConfirmation": true,
+          "autoFireOnEntry": false
         },
         "approvalGuard": null,
         "success": {
@@ -548,7 +556,7 @@
     "isPublic": true,
     "isDeleted": false,
     "createdAt": "2026-08-12T13:18:05.437Z",
-    "updatedAt": "2026-08-14T11:53:00.000Z"
+    "updatedAt": "2026-08-14T12:15:00.000Z"
   },
-  "commitMessage": "Bind Meridian restock pipeline transitions to list + workflows"
+  "commitMessage": "Disable auto-fire on Canvas-driven Meridian restock transitions"
 }

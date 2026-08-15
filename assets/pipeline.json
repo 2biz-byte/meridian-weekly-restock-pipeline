@@ -784,11 +784,11 @@
     "existingCasePolicies": [],
     "runConcurrency": "single",
     "projectionRepairVersion": 1,
-    "version": 890,
+    "version": 891,
     "isPublic": true,
     "isDeleted": false,
     "createdAt": "2026-08-12T13:18:05.437Z",
-    "updatedAt": "2026-08-15T14:56:01.813Z",
+    "updatedAt": "2026-08-15T14:56:33.456Z",
     "child": null,
     "childPipelines": null
   },

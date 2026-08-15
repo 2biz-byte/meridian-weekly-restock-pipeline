@@ -501,11 +501,15 @@
         "fromStageId": "stage_z4ump26",
         "toStageId": "stage_94vdup9",
         "workflowEndpointId": "1786738159577",
+        "acquisition": null,
+        "postProcessors": null,
+        "inputBindings": null,
         "trigger": "manual",
         "automation": {
           "autoFireOnEntry": false,
           "requireHumanConfirmation": true
         },
+        "approvalGuard": null,
         "success": {
           "advanceToStageId": "stage_94vdup9",
           "guardText": null,
@@ -518,6 +522,7 @@
           "persistListName": null
         },
         "failure": null,
+        "failureRoutes": null,
         "failureStageId": null,
         "guard": null,
         "fieldMappings": null,
@@ -525,6 +530,8 @@
         "outputArrayKey": "records",
         "selectionMode": "all_in_stage",
         "batchMode": "none",
+        "manualLabel": null,
+        "legacyRouteKey": null,
         "upsertKey": null
       },
       {
@@ -533,11 +540,15 @@
         "fromStageId": "stage_94vdup9",
         "toStageId": "stage_501w69i",
         "workflowEndpointId": "1786738365179",
+        "acquisition": null,
+        "postProcessors": null,
+        "inputBindings": null,
         "trigger": "manual",
         "automation": {
           "autoFireOnEntry": false,
           "requireHumanConfirmation": true
         },
+        "approvalGuard": null,
         "success": {
           "advanceToStageId": "stage_501w69i",
           "guardText": null,
@@ -550,6 +561,7 @@
           "persistListName": null
         },
         "failure": null,
+        "failureRoutes": null,
         "failureStageId": null,
         "guard": null,
         "fieldMappings": null,
@@ -557,6 +569,8 @@
         "outputArrayKey": "records",
         "selectionMode": "all_in_stage",
         "batchMode": "none",
+        "manualLabel": null,
+        "legacyRouteKey": null,
         "upsertKey": null
       },
       {
@@ -565,11 +579,15 @@
         "fromStageId": "stage_501w69i",
         "toStageId": "stage_wyp8879",
         "workflowEndpointId": "1786738425056",
+        "acquisition": null,
+        "postProcessors": null,
+        "inputBindings": null,
         "trigger": "manual",
         "automation": {
           "autoFireOnEntry": false,
           "requireHumanConfirmation": true
         },
+        "approvalGuard": null,
         "success": {
           "advanceToStageId": "stage_wyp8879",
           "guardText": null,
@@ -582,6 +600,7 @@
           "persistListName": null
         },
         "failure": null,
+        "failureRoutes": null,
         "failureStageId": null,
         "guard": null,
         "fieldMappings": null,
@@ -589,6 +608,8 @@
         "outputArrayKey": "records",
         "selectionMode": "all_in_stage",
         "batchMode": "none",
+        "manualLabel": null,
+        "legacyRouteKey": null,
         "upsertKey": null
       },
       {
@@ -597,11 +618,15 @@
         "fromStageId": "stage_wyp8879",
         "toStageId": null,
         "workflowEndpointId": null,
+        "acquisition": null,
+        "postProcessors": null,
+        "inputBindings": null,
         "trigger": "manual",
         "automation": {
           "autoFireOnEntry": false,
           "requireHumanConfirmation": true
         },
+        "approvalGuard": null,
         "success": {
           "advanceToStageId": null,
           "guardText": null,
@@ -614,6 +639,7 @@
           "persistListName": null
         },
         "failure": null,
+        "failureRoutes": null,
         "failureStageId": null,
         "guard": null,
         "fieldMappings": null,
@@ -621,6 +647,8 @@
         "outputArrayKey": "records",
         "selectionMode": "all_in_stage",
         "batchMode": "none",
+        "manualLabel": null,
+        "legacyRouteKey": null,
         "upsertKey": null
       }
     ],
@@ -756,11 +784,11 @@
     "existingCasePolicies": [],
     "runConcurrency": "single",
     "projectionRepairVersion": 1,
-    "version": 544,
+    "version": 890,
     "isPublic": true,
     "isDeleted": false,
     "createdAt": "2026-08-12T13:18:05.437Z",
-    "updatedAt": "2026-08-15T09:58:34.248Z",
+    "updatedAt": "2026-08-15T14:56:01.813Z",
     "child": null,
     "childPipelines": null
   },

@@ -3,13 +3,13 @@
   "commandId": "pl_1ba2b6fe2636",
   "trigger": "pl_1ba2b6fe2636",
   "label": "Meridian Weekly Restock Pipeline",
-  "updatedAt": 1786540685601,
+  "updatedAt": 1786787914248,
   "nodes": [
     {
       "id": "pipeline:pl_1ba2b6fe2636",
       "kind": "execution",
       "label": "Meridian Weekly Restock Pipeline",
-      "description": "Pipeline state machine",
+      "description": "Weekly stock-out restock planning pipeline",
       "meta": {
         "executionType": "pipeline",
         "pipelineId": "pl_1ba2b6fe2636",
@@ -75,6 +75,83 @@
       }
     },
     {
+      "id": "pipeline-transition:pl_1ba2b6fe2636:1786738159577",
+      "kind": "pipeline_transition",
+      "label": "intake",
+      "description": "Pipeline transition",
+      "meta": {
+        "pipelineId": "pl_1ba2b6fe2636",
+        "transitionId": "1786738159577",
+        "trigger": "manual"
+      }
+    },
+    {
+      "id": "endpoint:1786738159577",
+      "kind": "workflow_endpoint",
+      "label": "1786738159577",
+      "description": "Bound workflow",
+      "meta": {
+        "endpointId": "1786738159577",
+        "pipelineId": "pl_1ba2b6fe2636",
+        "transitionId": "1786738159577"
+      }
+    },
+    {
+      "id": "pipeline-transition:pl_1ba2b6fe2636:1786738365179",
+      "kind": "pipeline_transition",
+      "label": "inventory_ready",
+      "description": "Pipeline transition",
+      "meta": {
+        "pipelineId": "pl_1ba2b6fe2636",
+        "transitionId": "1786738365179",
+        "trigger": "manual"
+      }
+    },
+    {
+      "id": "endpoint:1786738365179",
+      "kind": "workflow_endpoint",
+      "label": "1786738365179",
+      "description": "Bound workflow",
+      "meta": {
+        "endpointId": "1786738365179",
+        "pipelineId": "pl_1ba2b6fe2636",
+        "transitionId": "1786738365179"
+      }
+    },
+    {
+      "id": "pipeline-transition:pl_1ba2b6fe2636:1786738425056",
+      "kind": "pipeline_transition",
+      "label": "forecast_ready",
+      "description": "Pipeline transition",
+      "meta": {
+        "pipelineId": "pl_1ba2b6fe2636",
+        "transitionId": "1786738425056",
+        "trigger": "manual"
+      }
+    },
+    {
+      "id": "endpoint:1786738425056",
+      "kind": "workflow_endpoint",
+      "label": "1786738425056",
+      "description": "Bound workflow",
+      "meta": {
+        "endpointId": "1786738425056",
+        "pipelineId": "pl_1ba2b6fe2636",
+        "transitionId": "1786738425056"
+      }
+    },
+    {
+      "id": "pipeline-transition:pl_1ba2b6fe2636:null",
+      "kind": "pipeline_transition",
+      "label": "drafts_ready",
+      "description": "Pipeline transition",
+      "meta": {
+        "pipelineId": "pl_1ba2b6fe2636",
+        "transitionId": "null",
+        "trigger": "manual"
+      }
+    },
+    {
       "id": "pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default",
       "kind": "pipeline_transition",
       "label": "intake",
@@ -134,67 +211,133 @@
       "relation": "writes"
     },
     {
-      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26:triggers:pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default:3",
+      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26:triggers:pipeline-transition:pl_1ba2b6fe2636:1786738159577:3",
+      "source": "pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26",
+      "target": "pipeline-transition:pl_1ba2b6fe2636:1786738159577",
+      "relation": "triggers"
+    },
+    {
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:1786738159577:executes:endpoint:1786738159577:4",
+      "source": "pipeline-transition:pl_1ba2b6fe2636:1786738159577",
+      "target": "endpoint:1786738159577",
+      "relation": "executes"
+    },
+    {
+      "id": "edge:endpoint:1786738159577:success:pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9:5",
+      "source": "endpoint:1786738159577",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9",
+      "relation": "success"
+    },
+    {
+      "id": "edge:endpoint:1786738159577:failure:pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26:6",
+      "source": "endpoint:1786738159577",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26",
+      "relation": "failure"
+    },
+    {
+      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9:triggers:pipeline-transition:pl_1ba2b6fe2636:1786738365179:7",
+      "source": "pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9",
+      "target": "pipeline-transition:pl_1ba2b6fe2636:1786738365179",
+      "relation": "triggers"
+    },
+    {
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:1786738365179:executes:endpoint:1786738365179:8",
+      "source": "pipeline-transition:pl_1ba2b6fe2636:1786738365179",
+      "target": "endpoint:1786738365179",
+      "relation": "executes"
+    },
+    {
+      "id": "edge:endpoint:1786738365179:success:pipeline-stage:pl_1ba2b6fe2636:stage_501w69i:9",
+      "source": "endpoint:1786738365179",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_501w69i",
+      "relation": "success"
+    },
+    {
+      "id": "edge:endpoint:1786738365179:failure:pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9:10",
+      "source": "endpoint:1786738365179",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9",
+      "relation": "failure"
+    },
+    {
+      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_501w69i:triggers:pipeline-transition:pl_1ba2b6fe2636:1786738425056:11",
+      "source": "pipeline-stage:pl_1ba2b6fe2636:stage_501w69i",
+      "target": "pipeline-transition:pl_1ba2b6fe2636:1786738425056",
+      "relation": "triggers"
+    },
+    {
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:1786738425056:executes:endpoint:1786738425056:12",
+      "source": "pipeline-transition:pl_1ba2b6fe2636:1786738425056",
+      "target": "endpoint:1786738425056",
+      "relation": "executes"
+    },
+    {
+      "id": "edge:endpoint:1786738425056:success:pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879:13",
+      "source": "endpoint:1786738425056",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879",
+      "relation": "success"
+    },
+    {
+      "id": "edge:endpoint:1786738425056:failure:pipeline-stage:pl_1ba2b6fe2636:stage_501w69i:14",
+      "source": "endpoint:1786738425056",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_501w69i",
+      "relation": "failure"
+    },
+    {
+      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879:triggers:pipeline-transition:pl_1ba2b6fe2636:null:15",
+      "source": "pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879",
+      "target": "pipeline-transition:pl_1ba2b6fe2636:null",
+      "relation": "triggers"
+    },
+    {
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:null:failure:pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879:16",
+      "source": "pipeline-transition:pl_1ba2b6fe2636:null",
+      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879",
+      "relation": "failure"
+    },
+    {
+      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26:triggers:pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default:17",
       "source": "pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26",
       "target": "pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default",
       "relation": "triggers"
     },
     {
-      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default:success:pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9:4",
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default:executes:endpoint:1786738159577:18",
       "source": "pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default",
-      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9",
-      "relation": "success"
+      "target": "endpoint:1786738159577",
+      "relation": "executes"
     },
     {
-      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default:failure:pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26:5",
-      "source": "pipeline-transition:pl_1ba2b6fe2636:stage_z4ump26__default",
-      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_z4ump26",
-      "relation": "failure"
-    },
-    {
-      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9:triggers:pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default:6",
+      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9:triggers:pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default:19",
       "source": "pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9",
       "target": "pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default",
       "relation": "triggers"
     },
     {
-      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default:success:pipeline-stage:pl_1ba2b6fe2636:stage_501w69i:7",
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default:executes:endpoint:1786738365179:20",
       "source": "pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default",
-      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_501w69i",
-      "relation": "success"
+      "target": "endpoint:1786738365179",
+      "relation": "executes"
     },
     {
-      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default:failure:pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9:8",
-      "source": "pipeline-transition:pl_1ba2b6fe2636:stage_94vdup9__default",
-      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_94vdup9",
-      "relation": "failure"
-    },
-    {
-      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_501w69i:triggers:pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default:9",
+      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_501w69i:triggers:pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default:21",
       "source": "pipeline-stage:pl_1ba2b6fe2636:stage_501w69i",
       "target": "pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default",
       "relation": "triggers"
     },
     {
-      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default:success:pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879:10",
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default:executes:endpoint:1786738425056:22",
       "source": "pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default",
-      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879",
-      "relation": "success"
+      "target": "endpoint:1786738425056",
+      "relation": "executes"
     },
     {
-      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default:failure:pipeline-stage:pl_1ba2b6fe2636:stage_501w69i:11",
-      "source": "pipeline-transition:pl_1ba2b6fe2636:stage_501w69i__default",
-      "target": "pipeline-stage:pl_1ba2b6fe2636:stage_501w69i",
-      "relation": "failure"
-    },
-    {
-      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879:triggers:pipeline-transition:pl_1ba2b6fe2636:stage_wyp8879__default:12",
+      "id": "edge:pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879:triggers:pipeline-transition:pl_1ba2b6fe2636:stage_wyp8879__default:23",
       "source": "pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879",
       "target": "pipeline-transition:pl_1ba2b6fe2636:stage_wyp8879__default",
       "relation": "triggers"
     },
     {
-      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_wyp8879__default:failure:pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879:13",
+      "id": "edge:pipeline-transition:pl_1ba2b6fe2636:stage_wyp8879__default:failure:pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879:24",
       "source": "pipeline-transition:pl_1ba2b6fe2636:stage_wyp8879__default",
       "target": "pipeline-stage:pl_1ba2b6fe2636:stage_wyp8879",
       "relation": "failure"

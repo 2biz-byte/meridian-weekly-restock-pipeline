@@ -16,7 +16,7 @@
         "type": "initial",
         "triggerKind": "manual",
         "description": null,
-        "workflowEndpointId": "shopify-inventory-scan",
+        "workflowEndpointId": "1786738159577",
         "reactiveConfig": {
           "webhookEnabled": true
         },
@@ -58,7 +58,7 @@
         "type": "intermediate",
         "triggerKind": "manual",
         "description": null,
-        "workflowEndpointId": "sheets-sales-forecast",
+        "workflowEndpointId": "1786738365179",
         "reactiveConfig": null,
         "scheduledConfig": null,
         "dataChangeConfig": null,
@@ -98,7 +98,7 @@
         "type": "intermediate",
         "triggerKind": "manual",
         "description": null,
-        "workflowEndpointId": "gmail-draft-supplier-email",
+        "workflowEndpointId": "1786738425056",
         "reactiveConfig": null,
         "scheduledConfig": null,
         "dataChangeConfig": null,
@@ -174,11 +174,11 @@
     ],
     "transitions": [
       {
-        "id": "stage_z4ump26__default",
+        "id": "1786738159577",
         "name": "intake",
         "fromStageId": "stage_z4ump26",
         "toStageId": "stage_94vdup9",
-        "workflowEndpointId": "shopify-inventory-scan",
+        "workflowEndpointId": "1786738159577",
         "acquisition": null,
         "postProcessors": null,
         "inputBindings": null,
@@ -244,11 +244,11 @@
         "upsertKey": null
       },
       {
-        "id": "stage_94vdup9__default",
+        "id": "1786738365179",
         "name": "inventory_ready",
         "fromStageId": "stage_94vdup9",
         "toStageId": "stage_501w69i",
-        "workflowEndpointId": "sheets-sales-forecast",
+        "workflowEndpointId": "1786738365179",
         "acquisition": null,
         "postProcessors": null,
         "inputBindings": null,
@@ -302,11 +302,11 @@
         "upsertKey": null
       },
       {
-        "id": "stage_501w69i__default",
+        "id": "1786738425056",
         "name": "forecast_ready",
         "fromStageId": "stage_501w69i",
         "toStageId": "stage_wyp8879",
-        "workflowEndpointId": "gmail-draft-supplier-email",
+        "workflowEndpointId": "1786738425056",
         "acquisition": null,
         "postProcessors": null,
         "inputBindings": null,
@@ -364,7 +364,7 @@
         "upsertKey": null
       },
       {
-        "id": "stage_wyp8879__default",
+        "id": "null",
         "name": "drafts_ready",
         "fromStageId": "stage_wyp8879",
         "toStageId": null,

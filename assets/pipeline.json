@@ -16,7 +16,7 @@
         "type": "initial",
         "triggerKind": "manual",
         "description": null,
-        "workflowEndpointId": "shopify-inventory-scan",
+        "workflowEndpointId": "1786738159577",
         "reactiveConfig": {
           "webhookEnabled": true
         },
@@ -58,7 +58,7 @@
         "type": "intermediate",
         "triggerKind": "manual",
         "description": null,
-        "workflowEndpointId": "sheets-sales-forecast",
+        "workflowEndpointId": "1786738365179",
         "reactiveConfig": null,
         "scheduledConfig": null,
         "dataChangeConfig": null,
@@ -98,7 +98,7 @@
         "type": "intermediate",
         "triggerKind": "manual",
         "description": null,
-        "workflowEndpointId": "gmail-draft-supplier-email",
+        "workflowEndpointId": "1786738425056",
         "reactiveConfig": null,
         "scheduledConfig": null,
         "dataChangeConfig": null,
